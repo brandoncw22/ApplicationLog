@@ -5,7 +5,7 @@ import "./db.js"; //DB Connection
 
 //Route Imports
 import authRoutes from "./routes/auth.js";
-// import jobRoutes from "./routes/jobs.js";
+import jobRoutes from "./routes/jobs.js";
 
 dotenv.config();
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.json());
 
 // routes
 app.use("/auth", authRoutes);
-// app.use("/jobs", jobRoutes);
+app.use("/jobs", jobRoutes);
 
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

@@ -37,4 +37,14 @@ CREATE TABLE IF NOT EXISTS jobs (
   status TEXT DEFAULT 'applied',  -- basic status lifecycle
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+-- Tokens table; Each token is unique
+CREATE TABLE IF NOT EXISTS tokens (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL, -- FK -> users.id
+  token TEXT NOT NULL,      -- JWT Token
+  type TEXT NOT NULL,       -- The type (i.e. verify, password reset, etc.)
+  status TEXT DEFAULT 'active', -- Status of the token
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
 `);
